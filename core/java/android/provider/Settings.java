@@ -4432,6 +4432,12 @@ public final class Settings {
 
 
        /**
+         * Show the pending notification counts as overlays on the status bar
+         * @hide
+         */
+        public static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
+
+       /**
         * Status bar weather temperature
         * 0: Hide the temperature
         * 1: Display the temperature with scale and image
