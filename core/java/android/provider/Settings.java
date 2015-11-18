@@ -4663,13 +4663,17 @@ public final class Settings {
          * 1: Scrolling ticker
          */
         public static final String STATUS_BAR_TICKER_ANIMATION_MODE = "status_bar_ticker_animation_mode";
-
         /**
          * Whether to change the transparency of the qs panel
          * @hide
          */
         public static final String QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
-
+        /**
+         * Boolean value whether to link ringtone and notification volume
+         *
+         * @hide
+         */
+        public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
