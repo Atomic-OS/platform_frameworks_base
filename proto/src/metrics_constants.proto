@@ -4588,6 +4588,9 @@ message MetricsEvent {
     // Tag of a field representing a duration on autofill-related metrics.
     FIELD_AUTOFILL_DURATION = 1145;
 
+    // Quick setting tiles
+    CUSTOM_QUICK_TILES = 9998;
+
     // ---- End O-MR1 Constants, all O-MR1 constants go above this line ----
 
     // ACTION: Stop an app and turn on background check
