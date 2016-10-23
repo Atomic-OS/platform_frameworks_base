@@ -3984,8 +3984,16 @@ public final class Settings {
         public static final String CUSTOM_BUTTON_BRIGHTNESS = "custom_button_brightness";
 
         /**
+         * Whether allowing pocket service to register sensors and dispatch informations.
+         *   0 = disabled
+         *   1 = enabled
+         * @author Carlo Savignano
+         * @hide
+         */
+        public static final String POCKET_JUDGE = "pocket_judge";
+
+        /**
          * use same value for buttons as for screen (manual and auto mode)
-         *
          * @hide
          */
         public static final String CUSTOM_BUTTON_USE_SCREEN_BRIGHTNESS = "custom_button_use_screen_brightness";
