@@ -4591,6 +4591,9 @@ message MetricsEvent {
     // Quick setting tiles
     CUSTOM_QUICK_TILES = 9998;
 
+    // Atomic-OS Laboratory
+    LABORATORY = 9999;
+
     // ---- End O-MR1 Constants, all O-MR1 constants go above this line ----
 
     // ACTION: Stop an app and turn on background check
