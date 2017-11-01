@@ -76,6 +76,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private View mLeftClock;
     private BatteryMeterView mBattery;
 
+    // Statusbar Weather Image
+    private View mWeatherImageView;
+    private View mWeatherTextView;
+    private int mShowWeather;
+
     private int mTickerEnabled;
     private TickerObserver mTickerObserver;
     private ContentResolver mContentResolver;
@@ -162,6 +167,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             mContentResolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.STATUS_BAR_BIG_BATTERY_ICON),
                     false, this, UserHandle.USER_ALL);
+            mContentResolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -181,12 +189,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         }
     }
 
-    public void updateSettings(boolean animate) {
-        mShowCarrierLabel = Settings.System.getIntForUser(
-                getContext().getContentResolver(), Settings.System.STATUS_BAR_CARRIER, 1,
-                UserHandle.USER_CURRENT);
-        setCarrierLabel(animate);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -210,6 +212,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mBattery = mStatusBar.findViewById(R.id.battery);
         Dependency.get(DarkIconDispatcher.class).addDarkReceiver(mSignalClusterView);
         mCustomCarrierLabel = mStatusBar.findViewById(R.id.statusbar_carrier_text);
+        mWeatherTextView = mStatusBar.findViewById(R.id.weather_temp);
+        mWeatherImageView = mStatusBar.findViewById(R.id.weather_image);
         updateSettings(false);
         // Default to showing until we know otherwise.
         showSystemIconArea(false);
@@ -425,6 +429,16 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             mStatusBarComponent.disableTicker();
         }
     }
+
+    public void updateSettings(boolean animate) {
+        mShowCarrierLabel = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_CARRIER, 1,
+                UserHandle.USER_CURRENT);
+        setCarrierLabel(animate);
+        mShowWeather = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0,
+                UserHandle.USER_CURRENT);
+        }
 
     private void setCarrierLabel(boolean animate) {
         if (mShowCarrierLabel == 2 || mShowCarrierLabel == 3) {
