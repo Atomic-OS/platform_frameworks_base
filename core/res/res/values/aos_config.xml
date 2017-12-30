@@ -31,6 +31,7 @@
         <item>restart</item>
         <item>advanced</item>
         <item>screenshot</item>
+        <item>airplane</item>
     </string-array>
 
     <!-- Whether device has dash charging support -->
