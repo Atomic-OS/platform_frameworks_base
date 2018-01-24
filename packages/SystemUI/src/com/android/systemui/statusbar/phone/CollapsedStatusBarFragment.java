@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.internal.utils.du.UserContentObserver;
@@ -93,7 +94,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private NetworkTraffic mNetworkTraffic;
 
     // AOS Status Logo
-    private View mAOSLogo;
+    private ImageView mAOSLogo;
     private boolean mShowLogo;
 
     private SignalCallback mSignalCallback = new SignalCallback() {
@@ -221,6 +222,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mWeatherTextView = mStatusBar.findViewById(R.id.weather_temp);
         mWeatherImageView = mStatusBar.findViewById(R.id.weather_image);
         mAOSLogo = mStatusBar.findViewById(R.id.status_bar_logo);
+        Dependency.get(DarkIconDispatcher.class).addDarkReceiver(mAOSLogo);
         updateSettings(false);
         // Default to showing until we know otherwise.
         showSystemIconArea(false);
@@ -254,6 +256,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         super.onDestroyView();
         Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mSignalClusterView);
         Dependency.get(StatusBarIconController.class).removeIconGroup(mDarkIconManager);
+        Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mAOSLogo);
         if (mNetworkController.hasEmergencyCryptKeeperText()) {
             mNetworkController.removeCallback(mSignalCallback);
         }
