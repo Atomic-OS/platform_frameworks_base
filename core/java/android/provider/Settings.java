@@ -4072,12 +4072,6 @@ public final class Settings {
          */
         public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
-       /**
-         * Whether to vibrate on power connection or disconnection
-         * @hide
-         */
-        public static final String VIBRATION_ON_CHARGE_STATE_CHANGED = "vibration_on_charge_state_changed";
-
         /**
          * Whether to show Brightness Icon On Brightness Slider
          * @hide
@@ -4378,6 +4372,18 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_CARRIER = "status_bar_carrier";
+
+	/**
+          * Whether to show a notification when the battery is charged at the set level and screen is off
+          * @hide
+          */
+         public static final String ALERT_ON_CHARGED_LEVEL = "alert_on_charged_level";
+
+	/**
+          * Whether to vibrate on power connection or disconnection
+          * @hide
+          */
+         public static final String VIBRATION_ON_CHARGE_STATE_CHANGED = "vibration_on_charge_state_changed";
 
         /**
          * custom carrier label. The value is
