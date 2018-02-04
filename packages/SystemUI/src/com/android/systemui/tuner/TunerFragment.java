@@ -33,9 +33,11 @@ public class TunerFragment extends PreferenceFragment {
 
     private static final String TAG = "TunerFragment";
 
-    private static final String SHOW_LTE_FOURGEE = "show_lte_fourgee";
+    private static final String KEY_SHOW_LTE_FOURGEE = "show_lte_fourgee";
+    private static final String KEY_STATUS_BAR_LOGO = "status_bar_logo";
 
     private SwitchPreference mShowLteFourGee;
+    private SwitchPreference mShowAosLogo;
 
     private static final String KEY_SHOW_LTE_FOURGEE = "show_lte_fourgee";
     private static final String KEY_ROAMING_INDICATOR = "roaming_indicator_icon";
@@ -51,13 +53,18 @@ public class TunerFragment extends PreferenceFragment {
 
         final ContentResolver resolver = getActivity().getContentResolver();
 
-        mShowLteFourGee = (SwitchPreference) findPreference(SHOW_LTE_FOURGEE);
+        mShowLteFourGee = (SwitchPreference) findPreference(KEY_SHOW_LTE_FOURGEE);
         if (aosUtils.isWifiOnly(getActivity())) {
             prefSet.removePreference(mShowLteFourGee);
         } else {
             mShowLteFourGee.setChecked((Settings.System.getInt(resolver,
                     Settings.System.SHOW_LTE_FOURGEE, 0) == 1));
         }
+
+        mShowAosLogo = (SwitchPreference) findPreference(KEY_STATUS_BAR_LOGO);
+        mShowAosLogo.setChecked((Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_LOGO, 0) == 1));
+
         mRoamingIndicator = (SwitchPreference) findPreference(KEY_ROAMING_INDICATOR);
         mRoamingIndicator.setChecked((Settings.System.getInt(resolver,
                 Settings.System.ROAMING_INDICATOR_ICON, 1) == 1));
@@ -99,6 +106,11 @@ public class TunerFragment extends PreferenceFragment {
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SHOW_LTE_FOURGEE, checked ? 1:0);
+            return true;
+        } else if  (preference == mShowAosLogo) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_LOGO, checked ? 1:0);
             return true;
         } else if  (preference == mRoamingIndicator) {
             boolean checked = ((SwitchPreference)preference).isChecked();

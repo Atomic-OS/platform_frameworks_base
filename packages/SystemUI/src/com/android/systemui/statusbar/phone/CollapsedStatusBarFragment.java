@@ -92,6 +92,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     private NetworkTraffic mNetworkTraffic;
 
+    // AOS Status Logo
+    private View mAOSLogo;
+    private boolean mShowLogo;
+
     private SignalCallback mSignalCallback = new SignalCallback() {
         @Override
         public void setIsAirplaneMode(NetworkController.IconState icon) {
@@ -170,6 +174,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             mContentResolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP),
                     false, this, UserHandle.USER_ALL);
+            mContentResolver.registerContentObserver(Settings.System.getUriFor(
+                     Settings.System.STATUS_BAR_LOGO),
+                     false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -188,7 +195,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             mNetworkTraffic.updateSettings();
         }
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -214,6 +220,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mCustomCarrierLabel = mStatusBar.findViewById(R.id.statusbar_carrier_text);
         mWeatherTextView = mStatusBar.findViewById(R.id.weather_temp);
         mWeatherImageView = mStatusBar.findViewById(R.id.weather_image);
+        mAOSLogo = mStatusBar.findViewById(R.id.status_bar_logo);
         updateSettings(false);
         // Default to showing until we know otherwise.
         showSystemIconArea(false);
@@ -327,8 +334,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         animateShow(mSystemIconArea, animate);
     }
 
-     public void hideNotificationIconArea(boolean animate) {
+    public void hideNotificationIconArea(boolean animate) {
         animateHide(mNotificationIconAreaInner, animate, true);
+        if (mShowLogo) {
+            animateHide(mAOSLogo, animate, true);
+        }
         if (((Clock)mLeftClock).isEnabled()) {
             animateHide(mLeftClock, animate, true);
         }
@@ -336,6 +346,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void showNotificationIconArea(boolean animate) {
         animateShow(mNotificationIconAreaInner, animate);
+        if (mShowLogo) {
+            animateShow(mAOSLogo, animate);
+        }
         if (((Clock)mLeftClock).isEnabled()) {
             animateShow(mLeftClock, animate);
         }
@@ -427,8 +440,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     mTickerEnabled, getContext(), mStatusBar, tickerView, tickerIcon, mTickerViewFromStub);
         } else {
             mStatusBarComponent.disableTicker();
+            }
         }
-    }
 
     public void updateSettings(boolean animate) {
         mShowCarrierLabel = Settings.System.getIntForUser(
@@ -438,7 +451,19 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mShowWeather = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0,
                 UserHandle.USER_CURRENT);
+        mShowLogo = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
+                UserHandle.USER_CURRENT) == 1;
+        if (mNotificationIconAreaInner != null) {
+            if (mShowLogo) {
+                if (mNotificationIconAreaInner.getVisibility() == View.VISIBLE) {
+                    animateShow(mAOSLogo, animate);
+                }
+            } else {
+                animateHide(mAOSLogo, animate, false);
+            }
         }
+    }
 
     private void setCarrierLabel(boolean animate) {
         if (mShowCarrierLabel == 2 || mShowCarrierLabel == 3) {
