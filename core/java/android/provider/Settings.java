@@ -3984,8 +3984,16 @@ public final class Settings {
         public static final String CUSTOM_BUTTON_BRIGHTNESS = "custom_button_brightness";
 
         /**
+         * Whether allowing pocket service to register sensors and dispatch informations.
+         *   0 = disabled
+         *   1 = enabled
+         * @author Carlo Savignano
+         * @hide
+         */
+        public static final String POCKET_JUDGE = "pocket_judge";
+
+        /**
          * use same value for buttons as for screen (manual and auto mode)
-         *
          * @hide
          */
         public static final String CUSTOM_BUTTON_USE_SCREEN_BRIGHTNESS = "custom_button_use_screen_brightness";
@@ -4071,12 +4079,6 @@ public final class Settings {
          * @hide
          */
         public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
-
-       /**
-         * Whether to vibrate on power connection or disconnection
-         * @hide
-         */
-        public static final String VIBRATION_ON_CHARGE_STATE_CHANGED = "vibration_on_charge_state_changed";
 
         /**
          * Whether to show Brightness Icon On Brightness Slider
@@ -4379,6 +4381,18 @@ public final class Settings {
          */
         public static final String STATUS_BAR_CARRIER = "status_bar_carrier";
 
+	/**
+          * Whether to show a notification when the battery is charged at the set level and screen is off
+          * @hide
+          */
+         public static final String ALERT_ON_CHARGED_LEVEL = "alert_on_charged_level";
+
+	/**
+          * Whether to vibrate on power connection or disconnection
+          * @hide
+          */
+         public static final String VIBRATION_ON_CHARGE_STATE_CHANGED = "vibration_on_charge_state_changed";
+
         /**
          * custom carrier label. The value is
          * String.
@@ -4403,6 +4417,18 @@ public final class Settings {
          * @hide
          */
         public static final String FORCE_AMBIENT_FOR_MEDIA = "force_ambient_for_media";
+
+        /**
+         * show clear all recents button
+         * @hide
+         */
+        public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+
+        /**
+         * location of the clear all rectents button
+         * @hide
+         */
+        public static final String  RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -7911,6 +7937,13 @@ public final class Settings {
          * @hide
          */
         public static final String QS_AUTO_ADDED_TILES = "qs_auto_tiles";
+
+        /**
+         * Enable face auto unlock on secure lock screens
+         *
+         * @hide
+         */
+        public static final String FACE_AUTO_UNLOCK = "face_auto_unlock";
 
         /**
          * This are the settings to be backed up.
