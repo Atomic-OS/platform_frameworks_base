@@ -37,6 +37,12 @@ public class TunerFragment extends PreferenceFragment {
 
     private SwitchPreference mShowLteFourGee;
 
+    private static final String KEY_SHOW_LTE_FOURGEE = "show_lte_fourgee";
+    private static final String KEY_ROAMING_INDICATOR = "roaming_indicator_icon";
+
+    private SwitchPreference mShowLteFourGee;
+    private SwitchPreference mRoamingIndicator;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,9 @@ public class TunerFragment extends PreferenceFragment {
             mShowLteFourGee.setChecked((Settings.System.getInt(resolver,
                     Settings.System.SHOW_LTE_FOURGEE, 0) == 1));
         }
+        mRoamingIndicator = (SwitchPreference) findPreference(KEY_ROAMING_INDICATOR);
+        mRoamingIndicator.setChecked((Settings.System.getInt(resolver,
+                Settings.System.ROAMING_INDICATOR_ICON, 1) == 1));
     }
 
     @Override
@@ -90,6 +99,11 @@ public class TunerFragment extends PreferenceFragment {
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SHOW_LTE_FOURGEE, checked ? 1:0);
+            return true;
+        } else if  (preference == mRoamingIndicator) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ROAMING_INDICATOR_ICON, checked ? 1:0);
             return true;
         }
         return super.onPreferenceTreeClick(preference);
