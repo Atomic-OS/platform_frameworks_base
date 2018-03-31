@@ -18,6 +18,16 @@
     <!-- Recent task locking -->
     <dimen name="recents_task_view_header_lock_button_padding">48dp</dimen>
 
+  <!-- Settings icon tint color -->
+  <java-symbol type="color" name="settings_icon_tint_color" />
+
+  <!-- Auto fill -->
+  <java-symbol type="color" name="autofill_save_title_color" />
+  <java-symbol type="color" name="autofill_autofill_save_custom_subtitle_color" />
+
+  <!-- Fastscroller thumb text color -->
+  <java-symbol type="color" name="fastscroller_thumb_text_color" />
+
   <!-- Power menu items -->
   <java-symbol type="color" name="power_menu_power_off" />
   <java-symbol type="color" name="power_menu_restart" />
@@ -113,4 +123,8 @@
   <!-- Whether device has turbo power charging support -->
   <java-symbol type="bool" name="config_hasTurboPowerCharger" />
 
+  <!-- Forcefully tint notification icon text -->
+  <java-symbol type="bool" name="config_useDarkBgNotificationIconTextTinting" />
+  <java-symbol type="bool" name="config_useDarkBgNotificationTinting_override" />
+  <java-symbol type="bool" name="config_notificationTinting_override" />
 </resources>

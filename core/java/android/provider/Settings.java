@@ -4576,6 +4576,12 @@ public final class Settings {
         public static final String STATUS_BAR_LOGO = "status_bar_logo";
 
         /**
+         * Configure the app to be used to edit screenshots with
+         * @hide
+         */
+        public static final String SCREENSHOT_EDIT_USER_APP = "screenshot_edit_user_app";
+
+        /**
          * Whether to use slim recents
          * @hide
          */
@@ -4620,7 +4626,7 @@ public final class Settings {
          */
         public static final String RECENT_PANEL_BG_COLOR = "recent_panel_bg_color";
 
-         /**
+        /**
          * Recent card background color
          *
          * @hide
@@ -4657,6 +4663,19 @@ public final class Settings {
          * @hide
          */
         public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+
+        /**
+         * Ticker animation
+         * 0: Fade animation
+         * 1: Scrolling ticker
+         */
+        public static final String STATUS_BAR_TICKER_ANIMATION_MODE = "status_bar_ticker_animation_mode";
+
+        /**
+         * Whether to change the transparency of the qs panel
+         * @hide
+         */
+        public static final String QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -8139,6 +8158,12 @@ public final class Settings {
                 "system_navigation_keys_enabled";
 
         /**
+         * Whether or not to allow quick settings expansion with one swipe on the fingerprint sensor.
+         * @hide
+         */
+        public static final String FP_QUICK_PULLDOWN_QS = "fp_quick_pulldown_qs";
+
+        /**
          * Holds comma separated list of ordering of QS tiles.
          * @hide
          */
@@ -8205,6 +8230,7 @@ public final class Settings {
          * 1: Display the battery an icon in landscape mode
          * 2: Display the battery as a circle
          * 3: Display the battery as a dotted circle
+         * 4: Display the battery as a square
          * 5: Display the battery as text
          * 6: Do not display the battery
          * default: 0
