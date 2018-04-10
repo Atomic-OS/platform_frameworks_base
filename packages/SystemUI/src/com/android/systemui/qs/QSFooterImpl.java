@@ -29,6 +29,8 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.UserManager;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.provider.AlarmClock;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;

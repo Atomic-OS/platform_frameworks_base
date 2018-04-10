@@ -6663,11 +6663,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_FOOTER_WARNINGS))) {
                 setQsPanelOptions();
             } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.SHOW_BATTERY_PERCENT))
-                    || uri.equals(Settings.Secure.getUriFor(
-                    Settings.Secure.STATUS_BAR_BATTERY_STYLE))) {
-                setStatusBarOptions();
-            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.RECENTS_ICON_PACK))) {
                 updateRecentsIconPack();
             } else if (uri.equals(Settings.System.getUriFor(
@@ -6695,7 +6690,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             setLockscreenMediaMetadata();
             setForceAmbient();
             setQsPanelOptions();
-            setStatusBarOptions();
             updateRecentsMode();
             updateTickerAnimation();
             updateKeyguardStatusSettings();
@@ -6707,7 +6701,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     // Called from CollapsedStatusBarFragment observer
-    private void setStatusBarOptions() {
+    public void updateBatterySettings() {
         if (mStatusBarView != null) {
             mStatusBarView.updateSettings();
         }
