@@ -20,8 +20,24 @@
   <java-symbol type="integer" name="config_sms_authorization_timeout_ms" />
   <java-symbol type="bool" name="config_sms_authorization_enabled" />
 
-    <!-- Recent task locking -->
-    <dimen name="recents_task_view_header_lock_button_padding">48dp</dimen>
+  <!-- Recent task locking -->
+  <dimen name="recents_task_view_header_lock_button_padding">48dp</dimen>
+
+  <!-- Custom Analog clock -->
+  <java-symbol type="drawable" name="custom_clock_dial" />
+  <java-symbol type="drawable" name="custom_clock_dial_ambient" />
+  <java-symbol type="drawable" name="custom_clock_hand_hour" />
+  <java-symbol type="drawable" name="custom_clock_hand_minute" />
+  <java-symbol type="color" name="analog_clock_border_color" />
+  <java-symbol type="color" name="analog_clock_face_color" />
+  <java-symbol type="color" name="analog_clock_hand_hour_color" />
+  <java-symbol type="color" name="analog_clock_hand_minute_color" />
+
+  <!-- DeadPool Analog clock -->
+  <java-symbol type="drawable" name="deadpool_clock_dial" />
+  <java-symbol type="drawable" name="deadpool_clock_dial_ambient" />
+  <java-symbol type="drawable" name="deadpool_clock_hand_hour" />
+  <java-symbol type="drawable" name="deadpool_clock_hand_minute" />
 
   <!-- Settings icon tint color -->
   <java-symbol type="color" name="settings_icon_tint_color" />
