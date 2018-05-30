@@ -19,6 +19,9 @@
 
     <color name="powersave_warning_color">#ff000000</color><!-- rgb 0 0 0 -->
 
+    <!-- Power menu wallpaper tint off color -->
+    <color name="power_menu_wallpaper_tint_off_color">#80202020</color>
+
     <!-- VPN footer -->
     <color name="quick_settings_footer_background_color">@android:color/white</color>
 
