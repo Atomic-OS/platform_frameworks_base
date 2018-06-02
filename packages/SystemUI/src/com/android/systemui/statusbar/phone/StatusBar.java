@@ -3164,7 +3164,11 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     public boolean isPulsing() {
-        return mDozeScrimController.isPulsing();
+        return mDozeScrimController != null ? mDozeScrimController.isPulsing() : false;
+    }
+
+    public DozeScrimController getDozeScrimController() {
+        return mDozeScrimController;
     }
 
     @Override
