@@ -161,4 +161,6 @@
   <java-symbol type="id" name="pocket_hint_image" />
   <java-symbol type="id" name="pocket_hint_message" />
 
+  <!-- Custom clocks -->
+  <java-symbol type="string" name="custom_clock_styles" />
 </resources>
