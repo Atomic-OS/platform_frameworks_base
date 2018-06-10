@@ -20,6 +20,9 @@
   <java-symbol type="bool" name="config_haveHigherAspectRatioScreen" />
   <java-symbol type="dimen" name="config_screenAspectRatio" />
 
+  <!-- Fastscroller -->
+  <java-symbol type="color" name="fastscroller_text_color" />
+
   <!-- Screen pinning toast -->
   <java-symbol type="color" name="screen_pinning_toast_dark_background_color" />
   <java-symbol type="color" name="screen_pinning_toast_dark_text_color" />
