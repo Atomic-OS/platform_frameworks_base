@@ -675,6 +675,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             final String currentPkg = mMediaController.getPackageName().toLowerCase();
             if (mSlimRecents != null) {
                 mSlimRecents.setMediaPlaying(true, currentPkg);
+            } else {
+                mRecents.setMediaPlaying(true, currentPkg);
             }
             for (String packageName : mNavMediaArrowsExcludeList) {
                 if (currentPkg.contains(packageName)) {
@@ -695,6 +697,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
             if (mSlimRecents != null) {
                 mSlimRecents.setMediaPlaying(false, "");
+            } else {
+                mRecents.setMediaPlaying(false, "");
             }
         }
     }
@@ -1963,13 +1967,15 @@ public class StatusBar extends SystemUI implements DemoMode,
             if (mNavigationBar != null) {
                 mNavigationBar.setPulseColors(n.isColorizedMedia(), colors);
             }
+            Icon icon = n.getOriginalLargeIcon();
+            Drawable drawable = null;
+            if (icon != null) {
+                drawable = icon.loadDrawable(mContext);
+            }
             if (mSlimRecents != null) {
-                Icon icon = n.getOriginalLargeIcon();
-                Drawable drawable = null;
-                if (icon != null) {
-                    drawable = icon.loadDrawable(mContext);
-                }
                 mSlimRecents.setMedia(n.isColorizedMedia(), colors, drawable, mMediaMetadata, title, text);
+            } else {
+                mRecents.setMedia(n.isColorizedMedia(), colors, drawable, mMediaMetadata, title, text);
             }
         }
     }
