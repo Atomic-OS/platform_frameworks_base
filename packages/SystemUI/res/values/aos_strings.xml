@@ -106,6 +106,8 @@
 
     <!-- Recents -->
     <string name="recents_app_killed">App killed</string>
+    <string name="recents_locked_app_kill_warning">App is locked. Force stopping but not dismissing this app.</string>
+    <string name="recents_kill_error_warning">Couldn\'t kill or force stop this app. Operation aborted.</string>
 
     <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_preventpower">override power key</string>
