@@ -4637,6 +4637,13 @@ public final class Settings {
         public static final String INCALL_NOTIFICATIONS_VIBRATE = "incall_notifications_vibrate";
 
         /**
+         * Whether to allow use of system themes alongside substratum
+         *
+         * @hide
+         */
+        public static final String FORCE_ALLOW_SYSTEM_THEMES = "force_allow_system_themes";
+
+        /**
          * 0 - wallpaper based
          * 1 - force light
          * 2 - force dark
