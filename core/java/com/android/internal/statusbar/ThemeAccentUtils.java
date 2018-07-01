@@ -173,7 +173,7 @@ public class ThemeAccentUtils {
     public static boolean isUsingWhiteAccent(IOverlayManager om, int userId) {
         OverlayInfo themeInfo = null;
         try {
-            themeInfo = om.getOverlayInfo(ACCENTS[21],
+            themeInfo = om.getOverlayInfo(ACCENTS[26],
                     userId);
         } catch (RemoteException e) {
             e.printStackTrace();
