@@ -61,6 +61,8 @@ import java.util.Set;
 
 public class ThemeTile extends QSTileImpl<BooleanState> {
 
+    private final String substratum = "projekt.substratum";
+
     static final List<ThemeTileItem> sThemeItems = new ArrayList<ThemeTileItem>();
     static {
         sThemeItems.add(new ThemeTileItem(0, R.color.quick_settings_theme_tile_default,
@@ -336,6 +338,21 @@ public class ThemeTile extends QSTileImpl<BooleanState> {
     @Override
     public int getMetricsCategory() {
         return MetricsEvent.CUSTOM_QUICK_TILES;
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return !isPackageInstalled();
+    }
+
+    private boolean isPackageInstalled() {
+        try {
+            PackageInfo info = mContext.getPackageManager()
+                    .getPackageInfo(substratum, PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
