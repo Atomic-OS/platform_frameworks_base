@@ -4841,6 +4841,14 @@ public final class Settings {
         public static final String CHOOSER_ACTIVITY_BLACKLIST = "chooser_activity_blacklist";
 
         /**
+	 ** Whether to show Device Accent on QS on the screen.
+	 ** 0 = OFF
+	 ** 1 = ON
+	 ** @hide
+	 **/
+         public static final String QS_TILE_TINTING_ENABLE = "qs_tile_tinting_enable";
+		 
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *

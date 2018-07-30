@@ -27,6 +27,8 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.provider.Settings;
+import android.os.Handler;
 
 import com.android.systemui.R;
 import com.android.systemui.plugins.qs.QSIconView;
@@ -173,7 +175,7 @@ public class QSIconViewImpl extends QSIconView {
                 int alpha = (int) (fromAlpha + (toAlpha - fromAlpha) * fraction);
                 int channel = (int) (fromChannel + (toChannel - fromChannel) * fraction);
 
-                setTint(iv, Color.argb(alpha, channel, channel, channel));
+	    setTint(iv, toColor);
             });
 
             anim.start();
