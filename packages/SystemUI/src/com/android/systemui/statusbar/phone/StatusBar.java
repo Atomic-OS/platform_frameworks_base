@@ -271,7 +271,6 @@ import com.android.systemui.statusbar.policy.RemoteInputView;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserInfoControllerImpl;
 import com.android.systemui.statusbar.policy.UserSwitcherController;
-import com.android.systemui.statusbar.screen_gestures.ScreenGesturesController;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout
         .OnChildLocationsChangedListener;
@@ -419,9 +418,6 @@ public class StatusBar extends SystemUI implements DemoMode,
      */
     private static final float SRC_MIN_ALPHA = 0.002f;
 
-    private static final String EDGE_GESTURES_ENABLED =
-            Settings.Secure.EDGE_GESTURES_ENABLED;
-
     static {
         boolean onlyCoreApps;
         boolean freeformWindowManagement;
@@ -544,10 +540,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     private int mTickerAnimationMode;
 
     private int mAmbientMediaPlaying;
-
-    // Full Screen Gestures
-    protected ScreenGesturesController gesturesController;
-    private boolean mEdgeGesturesEnabled;
 
     // Tracking finger for opening/closing.
     boolean mTracking;
@@ -6677,10 +6669,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_DATE_SELECTION),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.Secure.getUriFor(
-                    Settings.Secure.EDGE_GESTURES_ENABLED),
-                    false, this, UserHandle.USER_ALL);
-            update();
         }
 
         @Override
@@ -6751,9 +6739,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK_SELECTION)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_DATE_SELECTION))) {
                 updateKeyguardStatusSettings();
-            } else if (uri.equals(Settings.Secure.getUriFor(
-                    Settings.Secure.EDGE_GESTURES_ENABLED))) {
-                updateEdgeGestures();
             }
         }
 
@@ -6770,7 +6755,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateRecentsMode();
             updateTickerAnimation();
             updateKeyguardStatusSettings();
-            updateEdgeGestures();
         }
     }
 
@@ -8732,20 +8716,4 @@ public class StatusBar extends SystemUI implements DemoMode,
             mNavigationBar.getBarTransitions().setAutoDim(true);
         }
     };
-
-    public void updateEdgeGestures() {
-        Log.d(TAG, "updateEdgeGestures: Updating edge gestures");
-        boolean enabled = Settings.Secure.getIntForUser(mContext.getContentResolver(),
-                Settings.Secure.EDGE_GESTURES_ENABLED, 0, mCurrentUserId) == 1;
-        if (enabled) {
-            if (gesturesController == null) {
-                gesturesController = new ScreenGesturesController(mContext, mWindowManager, this);
-            }
-            gesturesController.reorient();
-        } else if (!enabled && gesturesController != null) {
-            gesturesController.stop();
-            gesturesController = null;
-        }
-    }
-
 }
