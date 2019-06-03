@@ -201,4 +201,8 @@
     <string name="accessibility_quick_settings_location_gps_only">Location reporting: sensors only mode.</string>
     <string name="accessibility_quick_settings_location_high_accuracy">Location reporting: high accuracy mode.</string>
 
+    <!-- Smart pixels QS tile -->
+    <string name="quick_settings_smart_pixels">Smart pixels</string>
+    <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled smart pixels</string>
+
 </resources>

@@ -3720,6 +3720,38 @@ public final class Settings {
         public static final Validator SHOW_WEB_SUGGESTIONS_VALIDATOR = sBooleanValidator;
 
         /**
+         * Whether to allow notifications with the screen on or DayDreams.
+         * The value is boolean (1 or 0). Default will always be false.
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_SCREEN_ON =
+                "notification_light_screen_on_enable";
+
+        /**
+         * Whether to enable Smart Pixels
+         * @hide
+         */
+        public static final String SMART_PIXELS_ENABLE = "smart_pixels_enable";
+
+        /**
+         * Smart Pixels pattern
+         * @hide
+         */
+        public static final String SMART_PIXELS_PATTERN = "smart_pixels_pattern";
+
+        /**
+         * Smart Pixels Shift Timeout
+         * @hide
+         */
+        public static final String SMART_PIXELS_SHIFT_TIMEOUT = "smart_pixels_shift_timeout";
+
+        /**
+         * Whether Smart Pixels should enable on power saver mode
+         * @hide
+         */
+        public static final String SMART_PIXELS_ON_POWER_SAVE = "smart_pixels_on_power_save";
+
+        /**
          * Whether the notification LED should repeatedly flash when a notification is
          * pending. The value is boolean (1 or 0).
          * @hide
@@ -3764,6 +3796,12 @@ public final class Settings {
 
         /** @hide */
         public static final Validator WINDOW_ORIENTATION_LISTENER_LOG_VALIDATOR = sBooleanValidator;
+
+        /**
+         * Force expanded notifications on all apps that support it.
+         * @hide
+         */
+        public static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
 
         /**
          * @deprecated Use {@link android.provider.Settings.Global#POWER_SOUNDS_ENABLED}
@@ -4791,11 +4829,25 @@ public final class Settings {
         public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
 
         /**
+         * Use EdgeGesture Service for system gestures in PhoneWindowManager
+         * @hide
+         */
+        public static final String USE_EDGE_SERVICE_FOR_GESTURES = "edge_service_for_gestures";
+
+        /**
          * Apps to hide in the ChooserActivity
          * @hide
          */
         public static final String CHOOSER_ACTIVITY_BLACKLIST = "chooser_activity_blacklist";
 
+        /**
+	 ** Whether to show Device Accent on QS on the screen.
+	 ** 0 = OFF
+	 ** 1 = ON
+	 ** @hide
+	 **/
+         public static final String QS_TILE_TINTING_ENABLE = "qs_tile_tinting_enable";
+		 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -8279,6 +8331,54 @@ public final class Settings {
          */
         public static final String MANAGED_PROFILE_CONTACT_REMOTE_SEARCH =
                 "managed_profile_contact_remote_search";
+
+        /**
+         * Whether to use edge gestures to navigate.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_ENABLED = "edge_gestures_enabled";
+
+        /**
+         * Haptic feedback duration on edge gesture navigation.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_FEEDBACK_DURATION = "edge_gestures_feedback_duration";
+
+        /**
+         * Long press duration on edge gesture navigation.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_LONG_PRESS_DURATION = "edge_gestures_long_press_duration";
+
+        /**
+         * Back gesture active on this edges.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_BACK_EDGES = "edge_gestures_back_edges";
+
+        /**
+         * Back gesture active on this edges when on landscape.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_LANDSCAPE_BACK_EDGES = "edge_gestures_landscape_back_edges";
+
+        /**
+         * Activate back gestures only when Y position > than this % of screen.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_BACK_SCREEN_PERCENT = "edge_gestures_back_screen_percent";
+
+        /**
+         * Show UI feedback when using back gesture.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_BACK_SHOW_UI_FEEDBACK = "edge_gestures_back_show_ui_feedback";
+
+        /**
+         * Use black arrow theme instead of the white version.
+         * @hide
+         */
+        public static final String EDGE_GESTURES_BACK_USE_BLACK_ARROW = "edge_gestures_back_use_black_arrow";
 
         /**
          * Whether or not the automatic storage manager is enabled and should run on the device.
